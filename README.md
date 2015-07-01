@@ -1,6 +1,6 @@
 CBM DOS Wedge
 ==============
-####Issuing arbitrary Commodore DOS commands to a connected disk drive directly from the BASIC command line
+**Issuing arbitrary Commodore DOS commands to a disk drive directly from the BASIC command line**
 
 Table of Contents
 -----------------
@@ -136,17 +136,53 @@ Sending DOS commands
 
 @<DOS command string> sends your command to the device's command channel. This text is not interpreted by the wedge, so the result depends on what your drive understands.
 
-Usually this are the Commodore DOS commands:
+These Commodore DOS commands are available (your device may support some others too):
 
-@C:newfile=existingfile Copy a file on the same diskette
-@I Initialize the disk drive. Rarely needed as the drive usually does this on its own if it has a door switch.
-@N:diskname New a disk that was already formatted
-@N:diskname,id Format (new) a diskette, giving it an index at your choice
-@R:newname=oldname Rename a file
-@S:file1[,file2 ...] Scratch a file (or files). Wild cards are allowed! Read the status channel with @ to see how many files were scratched.
-@UJ Reset the disk drive. Read the status channel with @ to get the DOS version string.
-@V Validate a disk: reconcile the BAM with the disk directory, allocate all used blocks and free all blocks not being used by files, and delete all unclosed files from the directory.
-@D1=0 Duplicate an entire disk. Only available in dual drive units. The target(!) drive number comes first, then the source drive number.
+     @C:newfile=existingfile
+
+Copy a file on the same diskette
+
+
+     @I
+
+Initialize the disk drive. Rarely needed as the drive usually does this on its own if it has a door switch.
+
+
+     @N:diskname
+
+New a disk that was already formatted
+
+
+     @N:diskname,id
+
+Format (new) a diskette, giving it an index at your choice
+
+
+     @R:newname=oldname
+
+Rename a file
+
+
+     @S:file1[,file2 ...]
+
+Scratch a file (or files). Wild cards are allowed!
+Read the status channel with @ to see how many files were scratched.
+
+
+     @UJ
+
+Reset the disk drive. Read the status channel with @ to get the DOS version string.
+
+
+     @V
+
+Validate a disk: reconcile the BAM with the disk directory, allocate all used blocks and free all blocks not being used by files, and delete all unclosed files from the directory.
+
+
+     @D1=0
+
+Duplicate an entire disk. Only available in dual drive units. The target(!) drive number comes first, then the source drive number.
+
 
 http://petsd.net/wedge.php
 
