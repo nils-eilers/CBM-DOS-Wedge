@@ -58,7 +58,7 @@ OPENI	.set $f466	; open file on IEEE device
 SECND	.set $f128	; send secondary address A
 ;	SETT		.set $f2cd	; set LF,DN,SA from table
 TALK	.set $f0b6	; send TALK
-;	TWAIT		.set $f92b	; 
+;	TWAIT		.set $f92b	;
 UNLSN	.set $f183	; send UNLISTEN
 UNTLK	.set $f17f	; send UNTALK
 

@@ -53,7 +53,7 @@ romwedge:	b2wedge.bin b4wedge.bin romwedge.asm
 	printf '\000' > A000.bin
 	printf '\240' >> A000.bin
 	cat A000.bin romwedge.bin > romwedge-A000.prg
-	
+
 
 doc:	wedge.htm
 	# Convert HTML to plain text
@@ -93,7 +93,7 @@ check:	wedge.htm
 
 d64:	wedge
 	# Create empty disk image
-	c1541 -format "universal wedge,ne" d64 wedge.d64 8 
+	c1541 -format "universal wedge,ne" d64 wedge.d64 8
 	# Copy prg to disk image
 	c1541 -attach wedge.d64 -write wedge
 	# Add BASIC documentation

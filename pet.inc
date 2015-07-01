@@ -53,7 +53,7 @@
 	BASIN		= $ffcf ; read char from input channel -> A
 	BSOUT		= $ffd2	; Write A to stdout
 	GETIN		= $ffe4	; read char from keyboard buffer -> A
-			
+
 ;----------------------------------------------------------------------------
 
 

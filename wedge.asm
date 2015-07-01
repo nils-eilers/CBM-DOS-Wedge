@@ -14,7 +14,7 @@
 	.include "stroutz.inc"		; working stroutz
 
 ;----------------------------------------------------------------------------
-; ZP ADDRESSES / ROM ENTRY POINTS 
+; ZP ADDRESSES / ROM ENTRY POINTS
 ;----------------------------------------------------------------------------
 	B2_MOVBLK	= $c2df		; BASIC 2 block move
 	B2_INTOUT	= $dcd9
@@ -33,18 +33,18 @@
 basic1:
 	lday hello
 	jsr STROUTZ
-	
+
 	lday detb1
 	jsr STROUTZ
 	rts
 
 ;----------------------------------------------------------------------------
-; INSTALL BASIC 2 WEDGE 
+; INSTALL BASIC 2 WEDGE
 ;----------------------------------------------------------------------------
 basic2:
 	lday hello			; say hello
 	jsr STROUTZ
-	
+
 	lday detb2			; write which basic was detected
 	jsr STROUTZ
 
@@ -87,7 +87,7 @@ basic2:
 
 	lday msg_inst			; write "wedge installed"
 	jsr STROUTZ
-	lday msg_mem0			; write 
+	lday msg_mem0			; write
 	jsr STROUTZ			; "memsize decreased by SIZE bytes"
 	ldx size
 	lda size+1
@@ -105,7 +105,7 @@ basic2:
 basic4:
 	lday hello			; say hello
 	jsr STROUTZ
-	
+
 	lday detb4			; write which basic was detected
 	jsr STROUTZ
 
@@ -148,7 +148,7 @@ basic4:
 
 	lday msg_inst			; write "wedge installed"
 	jsr STROUTZ
-	lday msg_mem0			; write 
+	lday msg_mem0			; write
 	jsr STROUTZ			; "memsize decreased by SIZE bytes"
 	ldx size
 	lda size+1
@@ -164,7 +164,7 @@ basic4:
 basicunknown:
 	lday hello
 	jsr STROUTZ
-	
+
 	lday detunknown
 	jsr STROUTZ
 	rts

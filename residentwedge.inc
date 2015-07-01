@@ -3,17 +3,17 @@
 
 	wedge_unit	= $73		; default device, unused byte in CHRGET
 	wedge_char	= $b3		; 0 if @># else load/run char / ^
-		
 
-	inc TXTPTR				; increment text pointer 
+
+	inc TXTPTR				; increment text pointer
 	bne :+
 	inc TXTPTR + 1
-: 
+:
 
 ; if MAINS is stacked, CHRGET is called from direct mode
 ; abort if not called from there
 	stx wedge_char		; save X
-	tsx 
+	tsx
 	lda $101,x
 	cmp #<MAINS
 	bne restabort
@@ -30,7 +30,7 @@
 	ldy #0				; NUL when @>#
 	sty wedge_char		; else load/run character /^
 
-testchar:	
+testchar:
 	lda (TXTPTR),y
 	cmp #' '			; skip leading spaces
 	bne nospace
@@ -43,7 +43,7 @@ nospace:
 	beq command_or_status
 	cmp #'#'			; '#'
 	beq default_device
-	iny 
+	iny
 	sta wedge_char		; save load/run character
 	cmp #'/'			; '/'
 	beq to_prepare_fn
@@ -51,14 +51,14 @@ nospace:
 	beq to_prepare_fn
 	bne abort
 
-restabort:	
+restabort:
 	ldx wedge_char		; restore X
 abort:
 	jmp CHRGOT
 
 ;----------------------------------------------------------------------------
 command_or_status:
-	iny 
+	iny
 	lda (TXTPTR),y
 	beq get_status
 	cmp #'$'			; '$'
@@ -68,7 +68,7 @@ command_or_status:
 ;----------------------------------------------------------------------------
 ; SET DEVICE
 ;----------------------------------------------------------------------------
-default_device:		
+default_device:
 	inc TXTPTR
 	lda (TXTPTR),y		; Y is still 0
 	bne set_device			; parameter given -> set device number
@@ -80,7 +80,7 @@ default_device:
 	jmp READY
 
 set_device:
-	; prerequsites for RDINT: 
+	; prerequsites for RDINT:
 	; - TXTPTR $77/$78 point to first char
 	; - A contains that first char
 	; - Carry is cleared
@@ -89,7 +89,7 @@ set_device:
 	lda LINNUM			; LSB of converted number
 	sta wedge_unit
 	jmp READY
-	
+
 ;----------------------------------------------------------------------------
 ; SEND COMMAND
 ;----------------------------------------------------------------------------
@@ -98,17 +98,17 @@ set_device:
 	sta DN
 	lda #$6f			; DATA SA 15
 	sta SA
-	jsr LISTN			; LISTEN 
+	jsr LISTN			; LISTEN
 	lda SA
 	jsr SECND			; send secondary address
 
 @nextchar:
 	inc TXTPTR
-	ldy #0			
+	ldy #0
 	lda (TXTPTR),y
-	beq @done	
+	beq @done
 	jsr CIOUT			; send char to IEEE
-	clv 
+	clv
 	bvc @nextchar		; branch always
 
 @done:
@@ -120,7 +120,7 @@ set_device:
 
 ;----------------------------------------------------------------------------
 ; 6502 wasn't made for writing relative code :(
-to_prepare_fn:	beq		prepare_fn		
+to_prepare_fn:	beq		prepare_fn
 
 ;----------------------------------------------------------------------------
 ; GET STATUS
@@ -136,10 +136,10 @@ get_status:
 
 @nextchar:
 	jsr ACPTR			; read byte from IEEE bus
-	cmp #CR				; last byte = CR?		
+	cmp #CR				; last byte = CR?
 	beq @done
 	jsr SCROUT			; write char to screen
-	clv 
+	clv
 	bvc @nextchar		; branch always
 
 @done:
@@ -149,11 +149,11 @@ get_status:
 
 ;----------------------------------------------------------------------------
 ; TODO: if we have quotes in our string, then they should handled here
-prepare_fn: 
+prepare_fn:
 	iny				; count filename length
 	lda (TXTPTR),y
 	bne prepare_fn
-	dey 
+	dey
 	sty FNLEN			; store length
 	ldx TXTPTR
 	inx
@@ -188,7 +188,7 @@ list_blocks:
 	ldy STATUS
 	bne to_stoplisting
 	ldy FNLEN
-	dey 
+	dey
 	bne list_blocks
 	ldx MEMUSS
 	lda MEMUSS + 1
@@ -221,7 +221,7 @@ listing:
 	beq :-				; wait for any key
 	bne @next			; then continue
 
-newline:	
+newline:
 	lda #CR
 	jsr SCROUT
 	ldy #2
@@ -230,8 +230,8 @@ newline:
 stoplisting:
 	jsr CLSEI			; close file with $E0, unlisten
 	jsr CRLF
-	pla 
-	pla 
+	pla
+	pla
 	jmp READY			; BASIC warm start
 ;----------------------------------------------------------------------------
 ; LOAD / RUN
@@ -274,6 +274,6 @@ loadrun:
 startprg:
 	jsr STXTPT			; reset TXTPTR
 	jmp NEWSTT			; RUN
-loaderr:	
+loaderr:
 	jmp FILENOTFOUND		; FILE NOT FOUND, return to basic
 

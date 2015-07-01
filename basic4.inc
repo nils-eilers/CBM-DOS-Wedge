@@ -56,7 +56,7 @@ SCNT	.set $f2c1	; prepare SETT for logical file A
 SECND	.set $f143	; send secondary address A
 SETT	.set $f2cd	; set LF,DN,SA from table
 TALK	.set $f0d2	; send TALK
-TWAIT	.set $f92b	; 
+TWAIT	.set $f92b	;
 UNLSN	.set $f1b9	; send UNLISTEN
 UNTLK	.set $f1ae	; send UNTALK
 

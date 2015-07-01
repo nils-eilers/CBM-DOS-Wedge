@@ -1,10 +1,10 @@
 ; Universal Wedge for BASIC 2 and BASIC 4
 ; Based on Commodore's universal wedge taken from 8050's test/demo disk
 ; but rewritten and enhanced by Nils Eilers
-; ROM version 
+; ROM version
 ;----------------------------------------------------------------------------
 	START = $9000			; uncomment one of the addresses
-;	START = $A000		
+;	START = $A000
 ; BASIC	.set 4				; uncomment appropiate BASIC version
 BASIC .set 2
 ;----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ install_wedge:
 
 	lday msg_inst			; write "wedge installed"
 	jsr STROUTZ
-	
+
 	rts				; exit to BASIC
 
 ;----------------------------------------------------------------------------
