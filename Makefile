@@ -33,19 +33,19 @@ sanity:
 .SILENT:	sanity
 
 b4wedge.bin:	b4wedge.asm basic4.inc pet.inc residentwedge.inc
-	ca65 -l b4wedge.asm
+	ca65 -l b4wedge.lst b4wedge.asm
 	ld65 -t none b4wedge.o -o b4wedge.bin
 
-b2wedge.bin:	b2wedge.asm basic2.inc pet.inc residentwedge.inc 
-	ca65 -l b2wedge.asm
+b2wedge.bin:	b2wedge.asm basic2.inc pet.inc residentwedge.inc
+	ca65 -l b2wedge.lst b2wedge.asm
 	ld65 -t none b2wedge.o -o b2wedge.bin
 
-mywedge:	b4wedge.bin b2wedge.bin wedge.asm 
-	ca65 -l wedge.asm
+mywedge:	b4wedge.bin b2wedge.bin wedge.asm
+	ca65 -l wedge.lst wedge.asm
 	ld65 -t none wedge.o -o wedge 
 
 romwedge:	b2wedge.bin b4wedge.bin romwedge.asm
-	ca65 -l romwedge.asm
+	ca65 -l romwedge.lst romwedge.asm
 	ld65 -t none romwedge.o -o romwedge.bin
 	printf '\000' > 9000.bin
 	printf '\220' >> 9000.bin
