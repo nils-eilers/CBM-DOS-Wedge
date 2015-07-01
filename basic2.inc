@@ -48,7 +48,7 @@ CIOUT	.set $f16f	; output A -> IEEE
 ;	CLOSE		.set $f2e0	; close file
 CLSEI	.set $f6f0	; close and unlisten
 ;	CLRCH		.set $ffcc	; reset stdio to defaults
-LISTN	.set $f0d5	; send LISTEN
+LISTN	.set $f0ba	; send LISTEN
 ;	LOAD		.set $f408	; LOAD
 LOADOP	.set $f322	; LOAD without pointer change
 FILENOTFOUND .set $f3e6	; FILE NOT FOUND, return to BASIC
