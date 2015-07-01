@@ -1,4 +1,10 @@
 *.bin
 *.o
 *.lst
-
+*.prg
+*.tmp
+*.d64
+wedge
+wedge-manual
+wedge.txt
+wedge.zip
