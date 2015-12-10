@@ -179,7 +179,7 @@ detb4:		.byte "BASIC 4 DETECTED", CR, 0
 detunknown:	.byte "UNABLE TO DETECT BASIC VERSION", CR, 0
 
 hello:  	.byte CR, CR
-		.byte "UNIVERSAL WEDGE (2015-07-01)", CR
+		.byte "UNIVERSAL WEDGE (2015-12-10)", CR
 		.byte "============================", CR, CR, 0
 msg_inst:	.byte "WEDGE INSTALLED", CR, 0
 msg_mem0:	.byte "MEMSIZ DECREASED BY", 0

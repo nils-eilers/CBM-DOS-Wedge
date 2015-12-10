@@ -57,6 +57,10 @@ abort:
 	jmp CHRGOT
 
 ;----------------------------------------------------------------------------
+syntax_err: 		jmp SYNERR
+illegal_qty_err: 	jmp IQERR
+;----------------------------------------------------------------------------
+
 command_or_status:
 	iny
 	lda (TXTPTR),y
@@ -80,6 +84,10 @@ default_device:
 	jmp READY
 
 set_device:
+	cmp #'0'			; numeric parameter?
+	bcc syntax_err
+	cmp #('9' + 1)
+	bcs syntax_err
 	; prerequsites for RDINT:
 	; - TXTPTR $77/$78 point to first char
 	; - A contains that first char
@@ -87,6 +95,10 @@ set_device:
 	clc
 	jsr RDINT			; convert string to unsigned int
 	lda LINNUM			; LSB of converted number
+	cmp #4
+	bcc illegal_qty_err
+	cmp #(30 + 1)
+	bcs illegal_qty_err
 	sta wedge_unit
 	jmp READY
 

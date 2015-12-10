@@ -67,6 +67,9 @@ READY	.set $c389	; basic warm start
 NEWSTT	.set $c6c4	; set up next statement for execution
 STOPEQ	.set $f301	; set Z flag if stop key pressed
 ;	STOPR		.set $ffe1	; return to basic if stop key pressed
+ERRO	.set $c36c	; BASIC error message
+SYNERR	.set $ce03	; SYNTAX ERROR
+IQERR	.set $d123	; ILLEGAL QUANTITY ERROR
 
 ;	MOVBLK		.set $b357	; move block
 
