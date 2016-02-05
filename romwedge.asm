@@ -66,9 +66,6 @@ b2wendplus1:
 b4wstart:	.incbin "b4wedge.bin"   ; BASIC 4 wedge
 b4wendplus1:
 		.endif
-;----------------------------------------------------------------------------
-; FILL UNUSED BYTES, TOTAL 4096 BYTES
-;----------------------------------------------------------------------------
-	.align 4096
+
 	.end
 

@@ -46,7 +46,7 @@ mywedge:	b4wedge.bin b2wedge.bin wedge.asm
 
 romwedge:	b2wedge.bin b4wedge.bin romwedge.asm
 	ca65 -l romwedge.lst romwedge.asm
-	ld65 -t none romwedge.o -o romwedge.bin
+	ld65 -C extroms.cfg romwedge.o
 	printf '\000' > 9000.bin
 	printf '\220' >> 9000.bin
 	cat 9000.bin romwedge.bin > romwedge-9000.prg
