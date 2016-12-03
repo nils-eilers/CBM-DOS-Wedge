@@ -4,25 +4,25 @@ sanity:
 	printf "Checking requirements... "
 	# Check and show all requiremens before doing anything
 	rm -f error.tmp
-	type -P petcat >/dev/null 2>&1 || \
+	command -v petcat >/dev/null 2>&1 || \
 	{ echo >&2 "petcat (part of VICE emulator) not found."; \
 	  touch error.tmp; }
-	type -P c1541 >/dev/null 2>&1 || \
+	command -v c1541 >/dev/null 2>&1 || \
 	{ echo >&2 "c1541 (part of VICE emulator) not found."; \
 	  touch error.tmp; }
-	type -P ca65 >/dev/null 2>&1 || \
+	command -v ca65 >/dev/null 2>&1 || \
 	{ echo >&2 "ca65 (part of cc65) not found."; \
 	  touch error.tmp; }
-	type -P cl65 >/dev/null 2>&1 || \
+	command -v cl65 >/dev/null 2>&1 || \
 	{ echo >&2 "cl65 (part of cc65) not found."; \
 	  touch error.tmp; }
-	type -P zip >/dev/null 2>&1 || \
+	command -v zip >/dev/null 2>&1 || \
 	{ echo >&2 "zip not found."; \
 	  touch error.tmp; }
-	type -P lynx >/dev/null 2>&1 || \
+	command -v lynx >/dev/null 2>&1 || \
 	{ echo >&2 "lynx not found."; \
 	  touch error.tmp; }
-	if [ -a error.tmp ] ; then \
+	if [ -e error.tmp ] ; then \
 		rm error.tmp ; \
 		echo "Some requirements were not met, aborting." ; \
 		exit 1 ; \
