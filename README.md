@@ -183,6 +183,8 @@ Validate a disk: reconcile the BAM with the disk directory, allocate all used bl
 
 Duplicate an entire disk. Only available in dual drive units. The target(!) drive number comes first, then the source drive number.
 
+Downloads
+---------
 
 http://petsd.net/wedge.php
 
