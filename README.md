@@ -5,16 +5,16 @@ CBM DOS Wedge
 Table of Contents
 -----------------
 
-     - Installation
-     - Command descriptions
-     - Wedge activation signs
-     - Setting the default device
-     - Displaying the directory
-     - Reading the disk drive error channel
-     - Loading a program
-     - Loading and running a program
-     - Sending DOS commands
-     - Downloads
+- [Installation](#installation)
+- [Command descriptions](#command-descriptions)
+- [Wedge activation signs](#wedge-activation-signs)
+- [Setting the default device](#setting-the-default-device)
+- [Displaying the directory](#displaying-the-directory)
+- [Reading the disk drive error channel](#reading-the-disk-drive-error-channel)
+- [Loading a program](#loading-a-program)
+- [Loading and running a program](#loading-and-running-a-program)
+- [Sending DOS commands](#sending-dos-commands)
+- [Downloads](#downloads)
 
 Installation
 ------------
