@@ -44,9 +44,7 @@ install_wedge:
 	sta $73				; (unused byte in CHRGET)
 
 	lday msg_inst			; write "wedge installed"
-	jsr STROUTZ
-
-	rts				; exit to BASIC
+	jmp STROUTZ			; and exit to BASIC
 
 ;----------------------------------------------------------------------------
 ; STRING CONSTANTS
@@ -68,4 +66,3 @@ b4wendplus1:
 		.endif
 
 	.end
-
